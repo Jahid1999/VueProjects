@@ -1,32 +1,72 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+<div>
+  <v-app>
+    <v-navigation-drawer v-model="drawer" app temporary color=#9FA8DA>
+        <v-list>
+            <v-list-item class="px-2">
+              <v-list-item-avatar>
+                <v-img src="./assets/logo.png"></v-img>
+              </v-list-item-avatar>
+            </v-list-item>
+
+            <v-list-item>
+              Jahid
+            </v-list-item>
+          </v-list>
+          <v-divider> </v-divider>
+
+         <v-list nav dense >
+
+            <v-list-item >
+            
+            <v-btn flat to="/"> Home </v-btn>
+            </v-list-item>
+            <v-list-item link>             
+             <v-btn flat to="/about"> About </v-btn>
+            </v-list-item>
+          
+        </v-list>
+    </v-navigation-drawer>
+
+      <v-toolbar dark>
+        <v-app-bar-nav-icon @click="drawer= !drawer"></v-app-bar-nav-icon>
+  
+        <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
+  
+        <v-btn flat icon> 
+          <v-icon>mdi-magnify</v-icon>
+          Search
+        </v-btn>
+        <v-spacer></v-spacer>
+  
+      </v-toolbar>
+      <v-content>
+        <router-view></router-view>
+
+      </v-content>
+
+  </v-app>
+</div>
+  
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-#nav {
-  padding: 30px;
-}
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+export default {
+  name: 'App',
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  components: {
+  
+  },
+
+  data: () => ({
+    drawer: false,
+    
+  }),
+};
+</script>
