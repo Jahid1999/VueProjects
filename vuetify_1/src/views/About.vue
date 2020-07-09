@@ -4,3 +4,9 @@
 
   </div>
 </template>
+
+<style scoped>
+  .about{
+    text-align : center;
+  }
+</style>
