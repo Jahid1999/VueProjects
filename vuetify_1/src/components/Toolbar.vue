@@ -4,7 +4,7 @@
             
             <v-toolbar dark="">
                 
-                <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
+                <v-app-bar-nav-icon @click="a=!a"></v-app-bar-nav-icon>
                  <v-spacer></v-spacer>
                  <v-spacer></v-spacer>
                  <v-spacer></v-spacer>
@@ -20,7 +20,7 @@
             
         </nav>
 
-         <v-navigation-drawer v-model="drawer" app temporary color=#9FA8DA>
+         <v-navigation-drawer v-model="a" app temporary color=#9FA8DA>
             <v-list>
                 <v-list-item class="px-2">
                 <v-list-item-avatar>
@@ -53,9 +53,12 @@
 </template>
 <script>
 export default {
-    name:"Toolbar",
-
-  
-    props: ['drawer']
+    name:"Toolbar", 
+    props: ['drawer'],
+    data () {
+        return {
+            a: this.drawer
+        }
+    }
 }
 </script>
