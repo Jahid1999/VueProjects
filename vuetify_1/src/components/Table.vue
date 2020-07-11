@@ -1,10 +1,14 @@
 <template>
   <div>
-       <input type="text" class="search-bar" placeholder="Search Name">
+     
     <v-card>
        
       <v-card-title>
         Developers
+        <v-spacer></v-spacer>
+        <div >
+          <v-btn  @click="ClearAll" rounded color="error" dark>Clear</v-btn>
+        </div>
         <v-spacer></v-spacer>
         <v-text-field
           v-model="search"
@@ -14,21 +18,74 @@
           hide-details
         ></v-text-field>
       </v-card-title>
+
       <v-data-table 
       :headers="headers" 
-      :items="desserts" 
-      :search="search">
+      :items="developers" 
+      :search="search"
+      item-key="name"
+      v-model="selected"
+      @click:row="showAlert">
+          <template slot=”items” slot-scope="props" >
+             
+            <td>{{ props.item.name }}</td>
+            <td>{{ props.item.department }}</td>
+            <td>{{ props.item.batch }}</td>
+            <td>{{ props.item.roll }}</td>
+            <td>{{ props.item.age }}</td>
+        </template>
+
       </v-data-table>
+
+    
+      
+      
     </v-card>
+
+    <v-card class="mx-auto" max-width="100%" v-for="jadu in selectedDev" :key="jadu.name">
+            
+                <v-card-title>{{jadu.name}}</v-card-title>
+              
+
+              <v-card-subtitle class="pb-0">Australia</v-card-subtitle>
+
+              <v-card-text class="text--primary">
+                <div>Whitehaven Beach</div>
+
+                <div>Whitsunday Island, Whitsunday Islands</div>
+              </v-card-text>
+            </v-card>
+
+  
   </div>
 </template>
 
 <script>
 export default {
     name: 'Table',
+    methods: {
+    showAlert(a){
+      if (event.target.classList.contains('btn__content')) return;
+      alert('Developers Details\n' + '\nName: ' + a.name
+            + '\nDepartment: ' + a.department
+            + '\nBatch: ' + a.batch
+            + '\nRoll: ' + a.roll
+            + '\nAge: ' + a.age
+      );
+      this.selectedDev=[...this.selectedDev,a];
+      
+
+    },
+    ClearAll() {
+      this.selectedDev = [];
+    }
+  },
+    
     data () {
     return {
       search: '',
+      selected: [],
+      selectedDev: [],
       headers: [
         {
           text: 'Name ',
@@ -41,7 +98,7 @@ export default {
         { text: 'Roll', value: 'roll' },
         { text: ' Age ', value: 'age' },
       ],
-      desserts: [
+      developers: [
         {
           name: 'Nafis Fuad',
           department: 'IIT',
@@ -100,30 +157,14 @@ export default {
         },
       ],
     }
-  }
+  },
+ 
+
 
 };
 </script>
-<style scoped>
-    .search-bar {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    color: #313131;
-    font-size: 20px;
-    appearance: none;
-    border:none;
-    outline: none;
-    background: none;
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
-    background-color: rgba(255, 255, 255, 0.25);
-    border-radius: 16px 16px 0px 0px;
-    transition: 0.4s;
-  }
-  .search-bar:focus {
-    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
-    background-color: rgba(255, 255, 255, 0.75);
-    border-radius: 16px 0px 16px 0px;
-  }
 
+<style scoped>
+  
 </style>
+

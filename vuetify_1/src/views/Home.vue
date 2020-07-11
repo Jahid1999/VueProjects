@@ -1,45 +1,20 @@
 <template>
   <div class="home">
-    <h1>This is home page</h1>
+    <h1>This is home page</h1> <br>
 
-    <v-container class="my-5">
-      <v-layout row wrap justify-space-between>
+    <v-container fluid="">
+      <v-layout row wrap justify-space-around>
         <v-flex xs4 md4 lg4>
-          <div>
-            <v-card class="mx-auto" max-width="400">
-              <v-img
-                class="white--text align-end"
-                height="200px"
-                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-              >
-                <v-card-title>Dream place to spend sometime</v-card-title>
-              </v-img>
-
-              <v-card-subtitle class="pb-0">Australia</v-card-subtitle>
-
-              <v-card-text class="text--primary">
-                <div>Whitehaven Beach</div>
-
-                <div>Whitsunday Island, Whitsunday Islands</div>
-              </v-card-text>
-
-              <v-card-actions>
-                <v-btn color="orange" text>Share</v-btn>
-
-                <v-btn color="orange" text>Explore</v-btn>
-              </v-card-actions>
-            </v-card>
-
-            <br />
-            <div class="text-center">
-              <v-btn rounded color="error" dark>Clear</v-btn>
-            </div>
+          <div >
+            <Cards />
           </div>
         </v-flex>
 
         <v-flex xs6 md6 lg6>
           <div>
+            <v-card class="mx-auto" max-width="100%">
             <Table />
+            </v-card>
           </div>
         </v-flex>
       </v-layout>
@@ -49,10 +24,12 @@
 
 <script>
 import Table from "../components/Table.vue";
+import Cards from "../components/Cards.vue";
 export default {
   name: "Home",
   components: {
-    Table
+    Table,
+    Cards
   }
 };
 </script>
@@ -61,4 +38,5 @@ export default {
 h1 {
   text-align: center;
 }
+
 </style>
