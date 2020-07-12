@@ -63,7 +63,7 @@
 <script>
 export default {
   name: "Toolbar",
-  props: ["drawer"],
+  props: ["drawer" ],
   data() {
     return {
       a: this.drawer

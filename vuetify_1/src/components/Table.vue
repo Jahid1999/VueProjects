@@ -42,42 +42,25 @@
       
     </v-card>
 
-    <v-card class="mx-auto" max-width="100%" v-for="jadu in selectedDev" :key="jadu.name">
-            
-                <v-card-title>{{jadu.name}}</v-card-title>
-              
-
-              <v-card-subtitle class="pb-0">Australia</v-card-subtitle>
-
-              <v-card-text class="text--primary">
-                <div>Whitehaven Beach</div>
-
-                <div>Whitsunday Island, Whitsunday Islands</div>
-              </v-card-text>
-            </v-card>
-
   
   </div>
 </template>
 
 <script>
+import {eventBus} from '../main'
 export default {
     name: 'Table',
     methods: {
     showAlert(a){
-      if (event.target.classList.contains('btn__content')) return;
-      alert('Developers Details\n' + '\nName: ' + a.name
-            + '\nDepartment: ' + a.department
-            + '\nBatch: ' + a.batch
-            + '\nRoll: ' + a.roll
-            + '\nAge: ' + a.age
-      );
+      
       this.selectedDev=[...this.selectedDev,a];
+      eventBus.$emit('select', a)
       
 
     },
     ClearAll() {
       this.selectedDev = [];
+      eventBus.$emit('clear', [])
     }
   },
     
@@ -165,6 +148,10 @@ export default {
 </script>
 
 <style scoped>
+  .cardText {
+    font-size: 17px;
+    font-weight: 600;
+  }
   
 </style>
 

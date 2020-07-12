@@ -4,13 +4,13 @@
 
     <v-container fluid="">
       <v-layout row wrap justify-space-around>
-        <v-flex xs4 md4 lg4>
+        <v-flex xs12 md4 lg4>
           <div >
             <Cards />
           </div>
         </v-flex>
 
-        <v-flex xs6 md6 lg6>
+        <v-flex xs12 md6 lg6>
           <div>
             <v-card class="mx-auto" max-width="100%">
             <Table />
@@ -27,10 +27,11 @@ import Table from "../components/Table.vue";
 import Cards from "../components/Cards.vue";
 export default {
   name: "Home",
+
   components: {
     Table,
     Cards
-  }
+  },
 };
 </script>
 
