@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="typeof weather.main != 'undefined' && weather.main.temp > 16 ? 'warm' : ''">
+  <div id="app" :class="typeof weather.main != 'undefined' && weather.main.temp > 20 ? 'warm' : ''">
     <main>
       <div class="searchBox">
         <input type="text" class="search-bar" placeholder="Search City" v-model="query" @keypress="fetchWeather">
@@ -15,6 +15,9 @@
           <div class="temp">{{ Math.round(weather.main.temp) }}°c</div>
           <div class="weather">{{ weather.weather[0].main }}</div>
         </div>
+        <div class="center">
+        <div class="affy"><p> Hi, I'm Jahid! <br> This is my first webapp.</p></div>
+      /</div>>
       </div>
     </main>
   </div>
@@ -149,6 +152,22 @@ export default {
     font-weight: 700;
     font-style: italic;
     text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+  }
+  .center{
+    text-align: center;
+  }
+  .center .affy {
+    display: inline-block;
+    padding: 10px 25px;
+    color: #FFF;
+    font-size: 40px;
+    font-weight: 700;
+    text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+    background-color:rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    margin: 30px 0px;
+    box-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+    
   }
 
 </style>
